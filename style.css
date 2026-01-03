@@ -1,0 +1,638 @@
+:root {
+    --bg-color: #050505;
+    --card-bg: #111111;
+    --text-primary: #f0f0f0;
+    --text-secondary: #a0a0a0;
+    --accent: #c5a45b;
+    /* Premium Gold */
+    --accent-hover: #e0bb65;
+    --border-color: #333333;
+    --font-main: 'Inter', sans-serif;
+    --font-heading: 'Playfair Display', serif;
+    --gradient: linear-gradient(135deg, #c5a45b, #e0bb65);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image: url('assets/images/black-abstract-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    scroll-behavior: smooth;
+    /* Smooth scrolling */
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 0.65rem 2rem;
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-links li a {
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+    color: var(--accent);
+    border-bottom: 2px solid var(--accent);
+}
+
+/* Cursor Glow Effect */
+.cursor-glow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(197, 164, 91, 0.05) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-heading);
+    color: var(--text-primary);
+}
+
+h1 {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+}
+
+h3.section-title {
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.2rem;
+}
+
+a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+/* Header / Hero */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 0;
+    margin-top: 60px;
+    /* Offset for fixed navbar */
+    /* Reduced from 6rem */
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.profile-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    padding: 5px;
+    background: var(--gradient);
+    background: var(--gradient);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px 5px rgba(197, 164, 91, 0.3);
+    /* Added accent glow */
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid var(--bg-color);
+    display: block;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.contact-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-top: 1rem;
+    align-items: center;
+}
+
+.separator {
+    color: var(--accent);
+}
+
+/* Sections */
+section {
+    margin-bottom: 2rem;
+    scroll-margin-top: 100px;
+    /* Ensures title is visible below fixed navbar */
+}
+
+.profile-text {
+    font-size: 1.1rem;
+    max-width: 100%;
+    /* Changed from 800px to fill container */
+    color: var(--text-secondary);
+}
+
+/* Split Grid Layout */
+.split-grid {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    /* Reduced from 4rem */
+}
+
+/* Ensure IDs within split-grid also respect navbar height */
+.split-grid>div[id] {
+    scroll-margin-top: 100px;
+}
+
+.work-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Logo Styles */
+.company-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.company-link:hover {
+    opacity: 0.8;
+}
+
+.company-logo {
+    height: 24px;
+    width: auto;
+    margin-right: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    /* Ensure visibility */
+    padding: 2px;
+    border-radius: 4px;
+}
+
+.logo-resist {
+    height: 16px;
+    /* Increased by 15% */
+}
+
+.logo-wrapper {
+    display: inline-block;
+    width: 36px;
+    /* Increased size +10% */
+    height: 36px;
+    overflow: hidden;
+    border-radius: 6px;
+    margin-right: 10px;
+    vertical-align: middle;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.logo-dch {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.35);
+    /* Zoom in to cut borders */
+    margin: 0;
+    border-radius: 0;
+}
+
+/* "Cut corners" */
+
+.logo-kpmg {
+    height: 28px;
+    /* 15% bigger than 24px is ~27.6px */
+}
+
+.date-inline {
+    font-size: 1.15rem;
+    /* Increased size */
+    color: #d0d0d0;
+    /* Brighter than text-secondary */
+    font-style: normal;
+    /* Removed italics for better readability */
+    font-weight: 300;
+    margin-left: 0.8rem;
+}
+
+.no-flex {
+    display: block;
+}
+
+.mb-1 {
+    margin-bottom: 0.5rem;
+}
+
+.icon-small {
+    height: 1.2rem;
+    width: auto;
+    vertical-align: middle;
+    filter: grayscale(100%) brightness(200%);
+    /* Make it fit the theme (white/grey) */
+    transition: filter 0.3s ease;
+}
+
+.contact-item:hover .icon-small {
+    filter: none;
+    /* Show original color on hover */
+}
+
+/* Helpers */
+.mb-3 {
+    margin-bottom: 1.5rem;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.h-auto {
+    height: auto !important;
+}
+
+.subsection-title {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin: 1.5rem 0 0.5rem 0;
+    font-family: var(--font-heading);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+}
+
+/* Cards */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+.card-header {
+    display: flex;
+    justify-content: flex-start;
+    /* Changed from space-between to keep title/date together */
+    align-items: baseline;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.card-header h4 {
+    font-size: 1.4rem;
+    /* Increased size */
+    letter-spacing: 0.5px;
+}
+
+.institution,
+.company {
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+}
+
+.date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.details {
+    margin-top: 0.5rem;
+    font-size: 1.05rem;
+    /* Increased from 0.95rem */
+    color: var(--text-secondary);
+}
+
+/* Skills Lists */
+.skills-list {
+    list-style: none;
+    font-size: 1.1rem;
+    /* Increased base size */
+}
+
+.skills-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+    align-items: center;
+}
+
+.skill-name {
+    font-weight: 500;
+}
+
+.skill-level {
+    color: var(--accent);
+    font-size: 1rem;
+    /* Increased from 0.9rem */
+}
+
+.flag {
+    margin-right: 0.5rem;
+    width: 20px;
+    height: auto;
+    vertical-align: middle;
+    border-radius: 2px;
+}
+
+.detailed-list {
+    list-style: none;
+    font-size: 1.1rem;
+    /* Increased readability */
+    line-height: 1.8;
+    /* Better line spacing */
+}
+
+.detailed-list li {
+    margin-bottom: 0.2rem;
+    /* Decreased from 1rem */
+    padding-left: 1rem;
+    position: relative;
+    color: var(--text-secondary);
+}
+
+.detailed-list li::before {
+    content: "•";
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.detailed-list strong {
+    color: var(--text-primary);
+}
+
+/* Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .split-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Ensure card heights are auto on mobile */
+    .h-100 {
+        height: auto;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 4rem 1rem;
+        gap: 2rem;
+    }
+
+    .contact-bar {
+        justify-content: center;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    #certificates {
+        width: 100%;
+        /* Maximize width on mobile */
+    }
+}
+
+.hero-content.card {
+    height: auto;
+    /* Override strict height from card class */
+    margin-bottom: 0;
+    /* Align properly in hero */
+}
+
+/* Carousel */
+#certificates {
+    margin: 0;
+    text-align: left;
+    width: 100%;
+    position: relative;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0 5%;
+    /* Small padding for buttons */
+}
+
+.carousel-track-container {
+    overflow: hidden;
+    position: relative;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 0;
+    /* Full width edge */
+    background: var(--card-bg);
+}
+
+.carousel-track {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+    height: 600px;
+    /* Increased height for better visibility */
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.carousel-slide.current-slide {
+    opacity: 1;
+    z-index: 1;
+    position: relative;
+    /* Ensure it takes up space if we want flow, but absolute is fine for explicit slide */
+}
+
+/* Override absolute for current slide to ensure height is respected if needed, 
+   but with track height fixed it's okay. 
+   Actually, absolute positioning stacks them. 
+   If we want left-right sliding, we usually use transform: translateX() on slides or track.
+   With opacity transition, we just stack them.
+*/
+
+.cert-image {
+    max-width: 100%;
+    max-height: 500px;
+    /* Increased max-height */
+    object-fit: contain;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.cert-caption {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--bg-color);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background: var(--accent);
+    color: var(--bg-color);
+}
+
+.prev-btn {
+    left: 0;
+}
+
+.next-btn {
+    right: 0;
+}
+
+@media (max-width: 600px) {
+    .carousel-track {
+        height: 350px;
+    }
+
+    .cert-image {
+        max-height: 250px;
+    }
+
+    .navbar {
+        padding: 1rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links li a {
+        font-size: 0.85rem;
+    }
+}
